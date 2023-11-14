@@ -1,7 +1,7 @@
 {
   "name": "todo-list",
   "version": "1.0.0",
-  "description": "Track the daily todos. ABle to add, delete and complete the todos.",
+  "description": "Track the daily todos. Able to add, delete and complete the todos.",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
