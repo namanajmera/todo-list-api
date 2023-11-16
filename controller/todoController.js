@@ -53,3 +53,11 @@ exports.getTodo = (req, res, next) => {
     data: data,
   });
 };
+
+exports.postTodo = (req, res, next) => {
+    console.log(req.body);
+  res.status(201).json({
+    status: "success",
+    message: "Todo add successfully",
+  });
+};

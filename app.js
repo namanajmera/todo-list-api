@@ -3,6 +3,8 @@ const app = express();
 const port = 8080;
 const todoRouter = require('./routes/todoRoute');
 
+app.use(express.json());
+
 app.use(todoRouter);
 
 app.use('/', (req,res) => {
