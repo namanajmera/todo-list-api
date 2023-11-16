@@ -1,48 +1,63 @@
 const data = [
   {
-    task: "Convince the office plants to photosynthesize faster",
-    priority: "High",
-    deadline: "2023-11-30",
+    id: "1",
+    todo_name: "Read Dune",
+    isCompleted: "true",
+    create_date: "2020-01-05",
   },
   {
-    task: "Teach the coffee machine to make espresso with a perfect crema",
-    priority: "Medium",
-    deadline: "2023-12-05",
+    id: "2",
+    todo_name: "Finish Foundation Trilogy",
+    isCompleted: "true",
+    create_date: "2020-02-10",
   },
   {
-    task: "Attend a meeting with the imaginary friend committee",
-    priority: "Low",
-    deadline: "2023-12-10",
+    id: "3",
+    todo_name: "Explore The Expanse series",
+    isCompleted: "false",
+    create_date: "2020-03-15",
   },
   {
-    task: "Practice synchronized chair spinning for the annual office chair Olympics",
-    priority: "High",
-    deadline: "2023-11-25",
+    id: "4",
+    todo_name: "Read Neuromancer",
+    isCompleted: "true",
+    create_date: "2020-04-20",
   },
   {
-    task: "Conquer the inbox dragon - reply to all emails with dragon-related GIFs",
-    priority: "Medium",
-    deadline: "2023-11-28",
+    id: "5",
+    todo_name: "Discover Ender's Game",
+    isCompleted: "false",
+    create_date: "2020-05-25",
   },
   {
-    task: "Develop a groundbreaking theory on why pens always disappear",
-    priority: "High",
-    deadline: "2023-12-15",
+    id: "6",
+    todo_name: "Finish Hyperion Cantos",
+    isCompleted: "false",
+    create_date: "2020-06-30",
   },
   {
-    task: "Organize a staring contest with the office fish. Blinking is not allowed",
-    priority: "Low",
-    deadline: "2023-12-03",
+    id: "7",
+    todo_name: "Explore The Martian",
+    isCompleted: "true",
+    create_date: "2020-07-04",
   },
   {
-    task: "Find out who stole all the staplers and organize a stapler amnesty program",
-    priority: "Medium",
-    deadline: "2023-12-08",
+    id: "8",
+    todo_name: "Read Snow Crash",
+    isCompleted: "true",
+    create_date: "2020-08-09",
   },
   {
-    task: "Master the art of desk origami, starting with the elusive paperclip swan",
-    priority: "High",
-    deadline: "2023-11-27",
+    id: "9",
+    todo_name: "Finish 1984",
+    isCompleted: "false",
+    create_date: "2020-09-14",
+  },
+  {
+    id: "10",
+    todo_name: "Discover The Hitchhiker's Guide to the Galaxy",
+    isCompleted: "true",
+    create_date: "2020-10-19",
   },
 ];
 
@@ -55,9 +70,18 @@ exports.getTodo = (req, res, next) => {
 };
 
 exports.postTodo = (req, res, next) => {
-    console.log(req.body);
+  console.log(req.body);
   res.status(201).json({
     status: "success",
     message: "Todo add successfully",
   });
 };
+
+exports.getTourById = (req,res,next) => {
+    const id = req.params.id;
+    const todo = data.filter((ele) => ele.id === id);
+    res.status(200).json({
+        status: "success",
+        data: todo 
+    })
+}
