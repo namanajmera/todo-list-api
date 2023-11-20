@@ -1,3 +1,5 @@
+const Todo = require("../models/todoModel");
+
 const data = [
   {
     id: "1",
@@ -69,11 +71,13 @@ exports.getTodo = (req, res, next) => {
   });
 };
 
-exports.postTodo = (req, res, next) => {
-  console.log(req.body);
+exports.postTodo = async (req, res, next) => {
+  const doc = await Todo.create(req.body);
+
   res.status(201).json({
     status: "success",
     message: "Todo add successfully",
+    data: doc,
   });
 };
 
