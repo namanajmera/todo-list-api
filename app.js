@@ -5,6 +5,7 @@ dotenv.config({ path: "./config.env" });
 const mongoose = require("mongoose");
 const port = process.env.PORT;
 const todoRouter = require("./routes/todoRoute");
+const morgan = require('morgan');
 
 // Get the  Mongo DB URL Connection String
 const DB = process.env.DATABASE;
@@ -16,6 +17,7 @@ mongoose
   })
   .then(() => console.log(`Connected To ${process.env.DATABASE} Successfully`));
 
+app.use(morgan('dev'));
 app.use(express.json());
 
 app.use(todoRouter);
