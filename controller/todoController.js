@@ -19,11 +19,28 @@ exports.postTodo = async (req, res, next) => {
   });
 };
 
-exports.getTourById = async (req,res,next) => {
-    const id = req.params.id;
-    const todo = await Todo.findById(id);
-    res.status(200).json({
-        status: "success",
-        data: todo 
-    })
-}
+exports.getTodoById = async (req, res, next) => {
+  const id = req.params.id;
+  const todo = await Todo.findById(id);
+  res.status(200).json({
+    status: "success",
+    data: todo,
+  });
+};
+
+exports.completeTodo = async (req, res, next) => {
+  const id = req.params.id;
+  const todo = await Todo.findById(id);
+  if (!todo) {
+    return res.status(404).json({
+      status: "error",
+      message: "Todo not found",
+    });
+  }
+  todo.isComplete = true;
+  await todo.save();
+  res.status(200).json({
+    status: "success",
+    data: todo,
+  });
+};
