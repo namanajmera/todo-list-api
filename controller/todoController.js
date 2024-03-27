@@ -44,3 +44,18 @@ exports.completeTodo = async (req, res, next) => {
     data: todo,
   });
 };
+
+exports.deleteByTodo = async (req, res, next) => {
+  const id = req.params.id;
+  const deleteTodo = await Todo.findByIdAndDelete(id);
+  if (!deleteTodo) {
+    return res.status(404).json({
+      status: "fail",
+      message: "Todo not found",
+    });
+  }
+  res.status(200).json({
+    status: "success",
+    data: null,
+  });
+};
