@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { getTodo, postTodo, getTodoById, completeTodo, deleteByTodo } = require('../controller/todoController');
 
-
-router.route('/todos').get(getTodo);
+router.route('/').get(getTodo);
 
 router.route('/add-todo').post(postTodo);
 

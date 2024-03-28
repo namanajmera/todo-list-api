@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
@@ -20,7 +21,10 @@ mongoose
 app.use(morgan('dev'));
 app.use(express.json());
 
-app.use(todoRouter);
+app.use(cors({
+  origin: 'http://localhost:3000'
+}))
+app.use("/todos", todoRouter);
 
 app.use("/", (req, res) => {
   res.send("Hello From Todos.");

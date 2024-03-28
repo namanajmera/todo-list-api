@@ -37,7 +37,7 @@ exports.completeTodo = async (req, res, next) => {
       message: "Todo not found",
     });
   }
-  todo.isComplete = true;
+  todo.isComplete = !todo.isComplete;
   await todo.save();
   res.status(200).json({
     status: "success",
