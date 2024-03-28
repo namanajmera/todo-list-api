@@ -22,8 +22,8 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 app.use(cors({
-  origin: 'http://localhost:3000'
-}))
+  origin: '*'
+}));
 app.use("/todos", todoRouter);
 
 app.use("/", (req, res) => {
